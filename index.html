@@ -61,9 +61,9 @@ input,textarea{-webkit-user-select:text!important;user-select:text!important;-we
 .nav-icon-btn:active{background:var(--ink);color:var(--warm-white);border-color:var(--ink)}
 
 .content-section{max-width:760px;margin:0 auto;padding:0 1.4rem;overflow-x:hidden}
-.info-card,.checklist-card,.memo-card,.weather-card{background:var(--warm-cream);border-radius:var(--radius);padding:1.8rem;margin:1rem 0;transition:filter .25s,box-shadow .25s,transform .25s;-webkit-tap-highlight-color:transparent}
+.info-card,.checklist-card,.memo-card,.weather-card{background:var(--warm-cream);border-radius:var(--radius);padding:1.8rem;margin:1rem 0;transition:filter .25s,box-shadow .25s,transform .25s;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 .info-card:active,.checklist-card:active,.memo-card:active,.weather-card:active{filter:brightness(.96) saturate(1.15);box-shadow:var(--shadow-md);transform:translateY(-5px)}
-.countdown-card{background:linear-gradient(135deg,var(--ember-light),rgba(126,155,94,.1));border-radius:var(--radius);padding:1.5rem 2rem;margin:3rem 0 1rem;text-align:center;transition:filter .25s,box-shadow .25s,transform .25s;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+.countdown-card{background:linear-gradient(135deg,var(--ember-light),rgba(126,155,94,.1));border-radius:var(--radius);padding:1.5rem 2rem;margin:3rem 0 1rem;text-align:center;transition:filter .25s,box-shadow .25s,transform .25s;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 .countdown-card:active{filter:brightness(.96) saturate(1.15);box-shadow:var(--shadow-md);transform:translateY(-5px)}
 .countdown-title{font-size:.8rem;color:var(--ink-faint);letter-spacing:.1em;margin-bottom:.3rem}
 .countdown-display{font-family:'Zen Old Mincho',serif;font-size:1.7rem;font-weight:700;color:var(--ember-deep);letter-spacing:.05em}
@@ -551,6 +551,7 @@ function renderDay(dayKey, elId){
     const key = dayKey + '-' + idx; idx++;
     const el = document.createElement('div');
     el.className = 'timeline-item';
+    el.addEventListener('touchstart', function(){}, { passive: true });
     el.dataset.time = it.time;
     let mapLink = it.map ? '<a href="https://maps.google.com/maps?q=' + encodeURIComponent(it.map + ' 福島県') + '" target="_blank" rel="noopener" class="card-link">📍 MAP</a>' : '';
     el.innerHTML =
